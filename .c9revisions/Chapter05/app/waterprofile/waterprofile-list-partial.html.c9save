@@ -1,0 +1,6 @@
+{"ts":1359507256981,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":true,"ts":1359507259033,"patch":[[{"diffs":[[1,"<div class=\"container-fluid\" ng-controller=\"style-list-controller\">\n    <div class=\"row-fluid\">\n        <h2>Styles</h2>\n    </div>\n    <div class=\"row-fluid\">\n        <div class=\"gridStyle\" ng-grid=\"gridOptions\"></div>\n    </div>\n</div>"]],"start1":0,"start2":0,"length1":0,"length2":236}]],"length":236,"saved":false}
+{"ts":1359507264716,"patch":[[{"diffs":[[0,"<h2>"],[-1,"Styles"],[0,"</h2"]],"start1":104,"start2":104,"length1":14,"length2":8}]],"length":230,"saved":false}
+{"ts":1359507269329,"patch":[[{"diffs":[[0,"    <h2>"],[1,"Water Profiles"],[0,"</h2>\n  "]],"start1":100,"start2":100,"length1":16,"length2":30}]],"length":244,"saved":false}
+{"ts":1359507274132,"patch":[[{"diffs":[[0,"er=\""],[-1,"style"],[0,"-lis"]],"start1":40,"start2":40,"length1":13,"length2":8}]],"length":239,"saved":false}
+{"ts":1359507279375,"patch":[[{"diffs":[[0,"roller=\""],[1,"waterprofile"],[0,"-list-co"]],"start1":36,"start2":36,"length1":16,"length2":28}]],"length":251,"saved":false}

@@ -27,5 +27,7 @@ angular.module('brewEverywhere', ['ui', 'ngGrid', 'mongolabResourceHttp', 'brewE
         when('/mashprofiles', {templateUrl:'mashprofile/mashprofile-list-partial.html'}).
         when('/recipes', {templateUrl:'recipe/recipe-list-partial.html'}).
         when('/styles', {templateUrl:'style/style-list-partial.html'}).
+        when('/waterprofiles', {templateUrl:'waterprofile/waterprofile-list-partial.html'}).
+        when('/yeast', {templateUrl:'yeast/yeast-list-partial.html'}).
         otherwise({templateUrl: 'error/error-partial.html'});
   }]);
