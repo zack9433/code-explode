@@ -7,7 +7,7 @@ Application.Controllers.controller('home-controller', ['$scope', '$location', 'a
         $scope.currentBrewer = authenticate.currentBrewer;
     });
 
-    $scope.brewerLoggedIn = function() {
-        return authenticate.brewerLoggedIn();
+    $scope.isBrewerLoggedIn = function() {
+        return authenticate.isBrewerLoggedIn();
     };
 }]);

@@ -38,7 +38,7 @@ Application.Services.factory('authenticate', ['$http', '$rootScope', '$window', 
             });
         },
 
-        brewerLoggedIn:function () {
+        isBrewerLoggedIn:function () {
             if ((authenticate.currentBrewer !== null) && (authenticate.currentBrewer !== undefined)) {
                 return true;
             }

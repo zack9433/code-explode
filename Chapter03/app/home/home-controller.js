@@ -1,9 +1,8 @@
 'use strict';
 
-Application.Controllers.controller('home-controller', ['$scope', '$location', function($scope, $location) {
-    $scope.currentBrewer = null;
+Application.Controllers.controller('home-controller', ['$scope', function($scope) {
 
-    $scope.brewerLoggedIn = function() {
+    $scope.isBrewerLoggedIn = function() {
         return false;
     };
 }]);

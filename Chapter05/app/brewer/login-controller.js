@@ -21,7 +21,7 @@ Application.Controllers.controller('login-controller', ['$scope', '$location', '
         $location.path('/register');
     };
 
-    $scope.brewerLoggedIn = function () {
-        return authenticate.brewerLoggedIn();
+    $scope.isBrewerLoggedIn = function () {
+        return authenticate.isBrewerLoggedIn();
     };
 }]);

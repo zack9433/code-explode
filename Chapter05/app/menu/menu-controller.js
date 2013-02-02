@@ -15,7 +15,7 @@ Application.Controllers.controller('menu-controller', ['$scope', '$location', 'a
         return false;
     };
 
-    $scope.brewerLoggedIn = function() {
-        return authenticate.brewerLoggedIn();
+    $scope.isBrewerLoggedIn = function() {
+        return authenticate.isBrewerLoggedIn();
     };
 }]);
