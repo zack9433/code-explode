@@ -1,6 +1,6 @@
 'use strict';
 
-Application.Controllers.controller('register-controller', ['$scope', '$location', 'BrewerResource', function($scope, $location, BrewerResource){
+Application.Controllers.controller('register-controller', ['$scope', '$location', 'BrewerResource', 'authenticate', function($scope, $location, BrewerResource, authenticate){
     $scope.brewer = new breweverywhere.Brewer();
     $scope.password = "";
     $scope.confirmpassword = "";
@@ -42,9 +42,11 @@ Application.Controllers.controller('register-controller', ['$scope', '$location'
                 }
 
                 var brewer = new BrewerResource($scope.brewer);
+
                 brewer.DateJoined = new Date();
 
-                brewer.Password = Sha1.hash($scope.password + brewer.DateJoined.valueOf());
+                brewer.Password = authenticate.hashPassword($scope.password, brewer.DateJoined.valueOf());
+
                 brewer.$save(function(brewer){
                     $location.path('/');
                 });

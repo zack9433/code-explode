@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 Application.Filters.filter('i18n', ['localize', function (localize) {
     return function (input) {
