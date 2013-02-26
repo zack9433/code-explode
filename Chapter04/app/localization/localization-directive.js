@@ -1,75 +1,101 @@
-'use strict';
+﻿'use strict';
 
 Application.Directives.directive('i18n', ['localize', function (localize) {
-    return {
+    var i18NDirective = {
         restrict: "EAC",
-        link: function (scope, elm, attrs) {
-            attrs.$observe('i18n', function (value) {
-                var values = value.split('|');
-                if (values.length >= 1) {
-                    // construct the tag to insert into the element
-                    var tag = localize.getLocalizedString(values[0]);
-                    // update the element only if data was returned
-                    if ((tag !== null) && (tag !== undefined) && (tag !== '')) {
-                        if (values.length > 1) {
-                            for (var index = 1; index < values.length; index++) {
-                                var target = '{' + (index - 1) + '}';
-                                tag = tag.replace(target, values[index]);
-                            }
-                        }
-                        // insert the text into the element
-                        elm.text(tag);
-                    };
-                }
-            });
-        }
-    };
-}]);
-
-Application.Directives.directive('i18nPassthrough', ['localize', function (localize) {
-    return {
-        restrict: "EAC",
-        link: function (scope, elm, attrs) {
-            attrs.$observe('i18nPassthrough', function (value) {
-                var values = value.split('|');
-                if (values.length >= 1) {
-                    // construct the tag to insert into the element
-                    var tag = localize.getLocalizedString(values[0]);
-                    // update the element only if data was returned
-                    if ((tag !== null) && (tag !== undefined) && (tag !== '')) {
-                        if (values.length > 1) {
-                            for (var index = 1; index < values.length; index++) {
-                                var target = '{' + (index - 1) + '}';
-                                tag = tag.replace(target, values[index]);
-                            }
-                        }
-                        // insert the text into the element
-                        elm.text(tag);
-                    } else {
-                        // use the passed value is nothing was returned
-                        elm.text(value);
-                    };
-                }
-            });
-        }
-    };
-}]);
-
-Application.Directives.directive('i18nAttr', ['localize', function (localize) {
-    return {
-        restrict: "EAC",
-        link: function (scope, elm, attrs) {
-            attrs.$observe('i18nAttr', function (value) {
-                var values = value.split('|');
+        updateText:function(elm, token){
+            var values = token.split('|');
+            if (values.length >= 1) {
                 // construct the tag to insert into the element
                 var tag = localize.getLocalizedString(values[0]);
                 // update the element only if data was returned
                 if ((tag !== null) && (tag !== undefined) && (tag !== '')) {
+                    if (values.length > 1) {
+                        for (var index = 1; index < values.length; index++) {
+                            var target = '{' + (index - 1) + '}';
+                            tag = tag.replace(target, values[index]);
+                        }
+                    }
                     // insert the text into the element
-                    elm.attr(values[1], tag);
-                };
+                    elm.text(tag);
+                }
+            }
+        },
+        link: function (scope, elm, attrs) {
+            scope.$on('localizeResourcesUpdates', function() {
+                i18NDirective.updateText(elm, attrs.i18n);
+            });
+
+            attrs.$observe('i18n', function (value) {
+                i18NDirective.updateText(elm, value);
             });
         }
     };
+
+    return i18NDirective;
+}]);
+
+Application.Directives.directive('i18nPassthrough', ['localize', function (localize) {
+    var i18NPassThroughDirective = {
+        restrict: "EAC",
+        updateText:function(elm, token){
+            var values = token.split('|');
+            if (values.length >= 1) {
+                // construct the tag to insert into the element
+                var tag = localize.getLocalizedString(values[0]);
+                // update the element only if data was returned
+                if ((tag !== null) && (tag !== undefined) && (tag !== '')) {
+                    if (values.length > 1) {
+                        for (var index = 1; index < values.length; index++) {
+                            var target = '{' + (index - 1) + '}';
+                            tag = tag.replace(target, values[index]);
+                        }
+                    }
+                    // insert the text into the element
+                    elm.text(tag);
+                } else {
+                    elm.text(token);
+                }
+            }
+        },
+        link: function (scope, elm, attrs) {
+            scope.$on('localizeResourcesUpdates', function() {
+                i18NPassThroughDirective.updateText(elm, attrs.i18nPassThrough);
+            });
+
+            attrs.$observe('i18nPassthrough', function (value) {
+                i18NPassThroughDirective.updateText(elm, value);
+            });
+        }
+    };
+
+    return i18NPassThroughDirective;
+}]);
+
+Application.Directives.directive('i18nAttr', ['localize', function (localize) {
+    var i18NAttrDirective = {
+        restrict: "EAC",
+        updateText:function(elm, token){
+            var values = token.split('|');
+            // construct the tag to insert into the element
+            var tag = localize.getLocalizedString(values[0]);
+            // update the element only if data was returned
+            if ((tag !== null) && (tag !== undefined) && (tag !== '')) {
+                // insert the text into the element
+                elm.attr(values[1], tag);
+            }
+        },
+        link: function (scope, elm, attrs) {
+            scope.$on('localizeResourcesUpdates', function() {
+                i18NAttrDirective.updateText(elm, attrs.i18nAttr);
+            });
+
+            attrs.$observe('i18nAttr', function (value) {
+                i18NAttrDirective.updateText(elm, value);
+            });
+        }
+    };
+
+    return i18NAttrDirective;
 }]);
 
