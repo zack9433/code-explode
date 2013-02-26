@@ -38,6 +38,11 @@ Application.Services.factory('authenticate', ['$http', '$rootScope', '$window', 
             });
         },
 
+        hashPassword:function(password, salt){
+            var result = Sha1.hash(password + salt);
+            return result;
+        },
+
         isBrewerLoggedIn:function () {
             if ((authenticate.currentBrewer !== null) && (authenticate.currentBrewer !== undefined)) {
                 return true;
