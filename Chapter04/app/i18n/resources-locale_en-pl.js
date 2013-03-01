@@ -16,7 +16,7 @@
     },
     {
         "key":"_TopRecipeTitle_",
-        "value":"Highest Rated Recipes",
+        "value":"ighestHay atedRay ecipesRay",
         "description":"Top Rated Recipe Title"
     },
     {
@@ -26,27 +26,27 @@
     },
     {
         "key":"_TopContributorTitle_",
-        "value":"Highest Contributors",
+        "value":"ighestHay ontributorsCay",
         "description":"Top Contributors Title text"
     },
     {
         "key":"_WhatsFermentingTitle_",
-        "value":"What's Fermenting",
+        "value":"hat'sWay ermentingFay",
         "description":"What's Fermenting section Title text"
     },
     {
         "key":"_MyRecipesTitle_",
-        "value":"My Recipes",
+        "value":"yMay ecipesRay",
         "description":"My Recipes Section Title text"
     },
     {
         "key":"_MyCalendarTitle_",
-        "value":"My Calender",
+        "value":"yMay alenderCay",
         "description":"My Calendar Section Title text"
     },
     {
         "key":"_MyInventoryTitle_",
-        "value":"My Inventory",
+        "value":"yMay InventoryAy",
         "description":"My Inventory Section Title text"
     }
 ]

@@ -46,7 +46,7 @@ Application.Services.factory('localize', ['$http', '$rootScope', '$window', '$fi
                     // check to make sure we have a valid entry
                     if ((entry !== null) && (entry != undefined) && (entry.key === value)) {
                         // set the result
-                        result = entry.value;y
+                        result = entry.value;
                     }
                 });
             }
