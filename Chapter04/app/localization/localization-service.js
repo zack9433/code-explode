@@ -6,26 +6,27 @@ Application.Services.factory('localize', ['$http', '$rootScope', '$window', '$fi
         language: $window.navigator.userLanguage || $window.navigator.language,
         // array to hold the localized resource string entries
         dictionary: [],
-        // flag to indicate if the service hs loaded the resource file
-        resourceFileLoaded: false,
 
         successCallback: function(data) {
             // store the returned array in the dictionary
-            localize.dictionary = data.InfoItems;
-            // set the flag that the resource are loaded
-            localize.resourceFileLoaded = true;
+            localize.dictionary = data;
             // broadcast that the file has been loaded
-            $rootScope.$broadcast('localizeResourcesUpdates');
+            $rootScope.$broadcast('localizeResourcesUpdated');
+        },
+
+        setLanguage: function(value) {
+            localize.language = value;
+            localize.initLocalizedResources();
         },
 
         initLocalizedResources: function() {
             // build the url to retrieve the localized resource file
-            var url = '/API/Chain/Dictionary/?locale=' + localize.language;
+            var url = '/i18n/resources-locale_' + localize.language + '.js';
 
             // request the resource file
             $http({ method: "GET", url: url, cache: false }).success(localize.successCallback).error(function () {
                 // the request failed set the url to the default resource file
-                var url = '/API/Chain/Dictionary/?locale=default';
+                var url = '/i18n/resources-locale_default.js';
                 // request the default resource file
                 $http({ method: "GET", url: url, cache: false }).success(localize.successCallback);
             });
@@ -39,24 +40,23 @@ Application.Services.factory('localize', ['$http', '$rootScope', '$window', '$fi
             if ((localize.dictionary !== []) && (localize.dictionary.length > 0)) {
                 // use the filter service to only return those entries which match the value
                 // and only take the first result
-                var entries = $filter('filter')(localize.dictionary, { Name: value });
+                var entries = $filter('filter')(localize.dictionary, { key: value });
                 // walk returned values to find matching entry
                 angular.forEach(entries, function (entry) {
                     // check to make sure we have a valid entry
-                    if ((entry !== null) && (entry != undefined) && (entry.Name === value)) {
+                    if ((entry !== null) && (entry != undefined) && (entry.key === value)) {
                         // set the result
-                        result = entry.Value;
+                        result = entry.value;
                     }
                 });
             }
-            //console.log(value + ': ' + result);
             // return the value to the call
             return result;
         }
     };
 
-    // force the load of the resource file
-    // localize.initLocalizedResources();
+    // force service to load the language resource file
+    localize.initLocalizedResources();
 
     // return the local instance when called
     return localize;

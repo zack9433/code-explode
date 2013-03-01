@@ -1,7 +1,7 @@
 [
     {
         "key":"_HomeTitle_",
-        "value":"Welcome to Brew Everywhere!",
+        "value":"elcomeWay otay rewBay Everywhereay!",
         "description":"Home page greeting text"
     },
     {

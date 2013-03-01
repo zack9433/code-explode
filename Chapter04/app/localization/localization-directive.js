@@ -22,7 +22,7 @@ Application.Directives.directive('i18n', ['localize', function (localize) {
             }
         },
         link: function (scope, elm, attrs) {
-            scope.$on('localizeResourcesUpdates', function() {
+            scope.$on('localizeResourcesUpdated', function() {
                 i18NDirective.updateText(elm, attrs.i18n);
             });
 
@@ -59,7 +59,7 @@ Application.Directives.directive('i18nPassthrough', ['localize', function (local
             }
         },
         link: function (scope, elm, attrs) {
-            scope.$on('localizeResourcesUpdates', function() {
+            scope.$on('localizeResourcesUpdated', function() {
                 i18NPassThroughDirective.updateText(elm, attrs.i18nPassThrough);
             });
 
@@ -81,12 +81,18 @@ Application.Directives.directive('i18nAttr', ['localize', function (localize) {
             var tag = localize.getLocalizedString(values[0]);
             // update the element only if data was returned
             if ((tag !== null) && (tag !== undefined) && (tag !== '')) {
+                if (values.length > 2) {
+                    for (var index = 2; index < values.length; index++) {
+                        var target = '{' + (index - 2) + '}';
+                        tag = tag.replace(target, values[index]);
+                    }
+                }
                 // insert the text into the element
                 elm.attr(values[1], tag);
             }
         },
         link: function (scope, elm, attrs) {
-            scope.$on('localizeResourcesUpdates', function() {
+            scope.$on('localizeResourcesUpdated', function() {
                 i18NAttrDirective.updateText(elm, attrs.i18nAttr);
             });
 
