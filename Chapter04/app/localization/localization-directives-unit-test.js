@@ -69,7 +69,7 @@ describe('i18nPassThrough directive', function() {
                 } else {
                     return '';
                 }
-            },
+            }
         };
 
         module('brewEverywhere.services', function ($provide) {
@@ -131,7 +131,7 @@ describe('i18nAttr directive', function() {
                 } else {
                     return '';
                 }
-            },
+            }
         };
 
         module('brewEverywhere.services', function ($provide) {

@@ -1,6 +1,5 @@
 describe('i18n filter', function() {
     var filter;
-    var scope;
     var localize;
 
     beforeEach(function () {
@@ -14,7 +13,7 @@ describe('i18n filter', function() {
                 } else {
                     return '';
                 }
-            },
+            }
         };
 
         module('brewEverywhere.services', function ($provide) {
