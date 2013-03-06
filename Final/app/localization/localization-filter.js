@@ -1,7 +1,16 @@
-/**
- * Created with JetBrains WebStorm.
- * User: jim.lavin
- * Date: 12/20/12
- * Time: 3:10 PM
- * To change this template use File | Settings | File Templates.
- */
+﻿'use strict';
+
+Application.Filters.filter('i18n', ['localize', function (localize) {
+    return function (input) {
+        var returnValue = '';
+
+        returnValue = localize.getLocalizedString(input);
+
+        if ((returnValue === null) || (returnValue === undefined) || (returnValue === '')) {
+            // use the passed value is nothing was returned
+            returnValue = input;
+        }
+
+        return returnValue;
+    };
+}]);

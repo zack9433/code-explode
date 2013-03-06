@@ -9,9 +9,9 @@ Application.Directives.
         require:'ngModel',
         link:function (scope, elm, attrs, ctrl) {
 
-            function checkForUniqueUserName(viewValue) {
-                BrewerResource.query({"Email":viewValue}).then(function(value){
-                    if (value.length === 0) {
+            function checkForEMail(viewValue) {
+                BrewerResource.query({"Email":viewValue}).then(function(result){
+                    if (result.length === 0) {
                         // it is valid
                         ctrl.$setValidity('uniqueEmail', true);
                         return viewValue;
@@ -23,17 +23,10 @@ Application.Directives.
                 });
             }
 
-            scope.$watch(attrs.uniqueEmail, function() {
-                ctrl.$setValidity('uniqueEmail', checkForUniqueUserName(scope.$eval(attrs.uniqueEmail)));
+            ctrl.$parsers.push(function(viewValue) {
+                return checkForEMail(viewValue);
             });
 
-            ctrl.$parsers.push(function() {
-                return checkForUniqueUserName(scope.$eval(attrs.uniqueEmail));
-            });
-
-            ctrl.$formatters.push(function() {
-                return checkForUniqueUserName(scope.$eval(attrs.uniqueEmail));
-            });
         }
     };
 }]);

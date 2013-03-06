@@ -2,7 +2,7 @@
     <form name="registerForm" class="form-horizontal">
         <div class="control-group">
             <label class="control-label" for="UserName">User Name </label>
-            <input class="input-large" id="UserName" name="UserName" type="text" required unique-UserName="brewer.UserName" ng-model="brewer.UserName" >
+            <input class="input-large" id="UserName" name="UserName" type="text" unique-Username required ng-model="brewer.UserName" >
         </div>
         <div class="control-group">
             <label class="control-label" for="FirstName">First Name </label>
@@ -14,7 +14,7 @@
         </div>
         <div class="control-group">
             <label class="control-label" for="Email">Email </label>
-            <input class="input-large" id="Email" name="Email" type="email" unique-Email="brewer.Email" ng-model="brewer.Email" >
+            <input class="input-large" id="Email" name="Email" type="email" unique-Email required ng-model="brewer.Email" >
         </div>
         <div class="control-group">
             <label class="control-label" for="Location">Location </label>
