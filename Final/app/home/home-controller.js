@@ -3,6 +3,14 @@
 Application.Controllers.controller('home-controller', ['$scope', '$location', 'authenticate', function($scope, $location, authenticate) {
     $scope.currentBrewer = null;
 
+    $scope.changeToEnglish = function() {
+        localize.setLanguage('en-US');
+    };
+
+    $scope.changeToPigLatin = function() {
+        localize.setLanguage('en-pl');
+    };
+
     $scope.$on('USER_UPDATED', function() {
         $scope.currentBrewer = authenticate.currentBrewer;
     });

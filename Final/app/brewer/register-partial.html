@@ -1,29 +1,20 @@
-<div class="row-fluid" >
-    <form name="registerForm" class="form-horizontal" ng-controller="register-controller">
-        <div>
-            <div ng-repeat="error in errorMessages">
-                <span class="warning" ng-bind="error"></span>
-            </div>
-        </div>
+<div class="row-fluid" ng-controller="register-controller">
+    <form name="registerForm" class="form-horizontal">
         <div class="control-group">
             <label class="control-label" for="UserName">User Name </label>
-            <input class="input-large" id="UserName" name="UserName" type="text" required unique-UserName ng-model="brewer.UserName" >
-            <span ng-show="registerForm.UserName.$invalid" >Dang! Someone already snagged that user name.</span>
+            <input class="input-large" id="UserName" name="UserName" type="text" required unique-UserName="brewer.UserName" ng-model="brewer.UserName" >
         </div>
         <div class="control-group">
             <label class="control-label" for="FirstName">First Name </label>
             <input class="input-large" id="FirstName" name="FirstName" type="text" required ng-model="brewer.FirstName">
-            <span ng-show="registerForm.FirstName.$invalid" >First Name is required</span>
         </div>
         <div class="control-group">
             <label class="control-label" for="LastName">Last Name </label>
             <input class="input-large" id="LastName" name="LastName" type="text" required ng-model="brewer.LastName">
-            <span ng-show="registerForm.LastName.$invalid" >Last Name is required</span>
         </div>
         <div class="control-group">
             <label class="control-label" for="Email">Email </label>
-            <input class="input-large" id="Email" name="Email" type="email" required unique-Email ng-model="brewer.Email" >
-            <span ng-show="registerForm.Email.$invalid" >Looks like someone with that email already exists in our system.</span>
+            <input class="input-large" id="Email" name="Email" type="email" unique-Email="brewer.Email" ng-model="brewer.Email" >
         </div>
         <div class="control-group">
             <label class="control-label" for="Location">Location </label>
@@ -40,19 +31,19 @@
         <div class="control-group">
             <label class="control-label" for="Password">Password </label>
             <input class="input-large" id="Password" name="Password" type="password" ng-model="password" required validate-equals="confirmpassword">
-            <span ng-show="registerForm.Password.$invalid" >Oops! Your passwords don't match.</span>
         </div>
         <div class="control-group">
             <label class="control-label" for="ConfirmPassword">Confirm Password </label>
             <input class="input-large" id="ConfirmPassword" name="ConfirmPassword" type="password" ng-model="confirmpassword">
         </div>
-        <div>
+        <div class="alert" ng-show="errorsExist()">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
             <div ng-repeat="error in errorMessages">
-                <span class="warning" ng-bind="error"></span>
+                <strong>Warning:</strong> <span ng-bind="error"></span>
             </div>
         </div>
         <div class="control-group">
-            <input type="submit" title="Save" ng-click="register()" ng-disabled="registerForm.$invalid" class="btn btn-large" ></input>
+            <button ng-click="register()" ng-disabled="registerForm.$invalid" class="btn btn-large" >Submit</button>
             <a href="#/" class="btn btn-large">Cancel</a>
         </div>
     </form>
