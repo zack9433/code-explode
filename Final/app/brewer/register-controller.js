@@ -30,7 +30,7 @@ Application.Controllers.controller('register-controller', ['$scope', '$location'
             result = true;
             $scope.errorMessages.push('That Email already has an account.')
         }
-        if($scope.registerForm.Password.$error.equal && !$scope.registerForm.Email.$pristine) {
+        if($scope.registerForm.Password.$error.equal && !$scope.registerForm.Password.$pristine) {
             result = true;
             $scope.errorMessages.push('Passwords does not match.')
         }

@@ -55,7 +55,6 @@ Application.Services.factory('authenticate', ['$http', '$rootScope', '$window', 
             authenticate.currentBrewer = null;
             $rootScope.$broadcast('USER_UPDATED');
         }
-
     };
 
     return authenticate;
