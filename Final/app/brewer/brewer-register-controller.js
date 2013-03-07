@@ -1,6 +1,6 @@
 'use strict';
 
-Application.Controllers.controller('register-controller', ['$scope', '$location', 'BrewerResource', 'authenticate', function ($scope, $location, BrewerResource, authenticate) {
+Application.Controllers.controller('brewer-register-controller', ['$scope', '$location', 'BrewerResource', 'authenticate', function ($scope, $location, BrewerResource, authenticate) {
     $scope.brewer = new breweverywhere.Brewer();
     $scope.password = "";
     $scope.confirmpassword = "";

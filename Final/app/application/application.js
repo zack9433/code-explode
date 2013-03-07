@@ -19,7 +19,7 @@ angular.module('brewEverywhere', ['ui', 'ngGrid', 'mongolabResourceHttp', 'brewE
     
     $routeProvider.
         when('/', {templateUrl:'home/home-partial.html'}).
-        when('/register', {templateUrl:'brewer/register-partial.html'}).
+        when('/register', {templateUrl:'brewer/brewer-register-partial.html'}).
         when('/adjuncts', {templateUrl:'adjuncts/adjunct-list-partial.html'}).
         when('/equipment', {templateUrl:'equipment/equipment-list-partial.html'}).
         when('/fermentables', {templateUrl:'fermentables/fermentables-list-partial.html'}).
@@ -30,5 +30,7 @@ angular.module('brewEverywhere', ['ui', 'ngGrid', 'mongolabResourceHttp', 'brewE
         when('/waterprofiles', {templateUrl:'waterprofile/waterprofile-list-partial.html'}).
         when('/yeast', {templateUrl:'yeast/yeast-list-partial.html'}).
         when('/myprofile', {templateUrl:'brewer/brewer-profile-partial.html'}).
+        when('/myemail', {templateUrl:'brewer/brewer-change-email-partial.html'}).
+        when('/mypassword', {templateUrl:'brewer/brewer-change-password-partial.html'}).
         otherwise({templateUrl: 'error/error-partial.html'});
   }]);

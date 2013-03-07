@@ -21,6 +21,14 @@ Application.Controllers.controller('brewer-profile-controller', ['$scope', '$loc
         return result;
     };
 
+    $scope.changeEmail = function() {
+        $location.path('/myemail');
+    }
+
+    $scope.changePassword = function() {
+        $location.path('/mypassword');
+    }
+
     $scope.register = function () {
         var brewer = new BrewerResource($scope.brewer);
 
