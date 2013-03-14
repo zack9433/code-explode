@@ -1,6 +1,6 @@
 'use strict';
 
-Application.Controllers.controller('home-controller', ['$scope', '$location', 'authenticate', function($scope, $location, authenticate) {
+Application.Controllers.controller('home-controller', ['$scope', '$location', 'authenticate', 'localize', function($scope, $location, authenticate, localize) {
     $scope.currentBrewer = null;
 
     $scope.changeToEnglish = function() {

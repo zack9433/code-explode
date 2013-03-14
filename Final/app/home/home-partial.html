@@ -18,7 +18,7 @@
     </div>
 
     <!-- content displayed when brewer is logged out -->
-    <div class="row" ng-hide="isBrewerLoggedIn()">
+    <div id="loggedOutBanner" class="row" ng-hide="isBrewerLoggedIn()">
         <div class="span4">
             <h2 data-i18n="_TopRecipeTitle_">Highest Rated Recipes</h2>
 
@@ -52,7 +52,7 @@
         </div>
     </div>
     <!-- content displayed when brewer is logged in -->
-    <div class="row" ng-show="isBrewerLoggedIn()">
+    <div id="loggedInBanner" class="row" ng-show="isBrewerLoggedIn()">
         <div class="span4">
             <h2 data-i18n="_MyRecipesTitle_">My Recipes</h2>
 
