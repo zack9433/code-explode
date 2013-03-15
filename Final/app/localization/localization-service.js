@@ -21,12 +21,12 @@ Application.Services.factory('localize', ['$http', '$rootScope', '$window', '$fi
 
         initLocalizedResources: function() {
             // build the url to retrieve the localized resource file
-            var url = '/i18n/resources-locale_' + localize.language + '.js';
+            var url = '/app/i18n/resources-locale_' + localize.language + '.js';
 
             // request the resource file
             $http({ method: "GET", url: url, cache: false }).success(localize.successCallback).error(function () {
                 // the request failed set the url to the default resource file
-                var url = '/i18n/resources-locale_default.js';
+                var url = '/app/i18n/resources-locale_default.js';
                 // request the default resource file
                 $http({ method: "GET", url: url, cache: false }).success(localize.successCallback);
             });
@@ -40,15 +40,13 @@ Application.Services.factory('localize', ['$http', '$rootScope', '$window', '$fi
             if ((localize.dictionary !== []) && (localize.dictionary.length > 0)) {
                 // use the filter service to only return those entries which match the value
                 // and only take the first result
-                var entries = $filter('filter')(localize.dictionary, { key: value });
-                // walk returned values to find matching entry
-                angular.forEach(entries, function (entry) {
-                    // check to make sure we have a valid entry
-                    if ((entry !== null) && (entry != undefined) && (entry.key === value)) {
-                        // set the result
-                        result = entry.value;
+                var entry = $filter('filter')(localize.dictionary, function(element) {
+                        return element.key === value;
                     }
-                });
+                )[0];
+
+                // set the result
+                result = entry.value;
             }
             // return the value to the call
             return result;
