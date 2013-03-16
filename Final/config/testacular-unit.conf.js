@@ -9,6 +9,7 @@ files = [
     'app/lib/angularjs-mongolab-promise/*.js',
     'app/lib/sha/*.js',
 
+    'app/application/*.js',
     'app/*/*.js',
     'app/*/*-constants.js',
     'app/*/*-service.js',
