@@ -5,12 +5,12 @@ files = [
     JASMINE_ADAPTER,
     'app/lib/angular/angular.js',
     'app/lib/angular/angular-mocks.js',
-    'app/lib/angular/angular-mocks.js',
-    'app/lib/angular/angular-mocks.js',
 
     'app/lib/angularjs-mongolab-promise/*.js',
     'app/lib/sha/*.js',
 
+    'app/application/*.js',
+    'app/*/*.js',
     'app/*/*-constants.js',
     'app/*/*-service.js',
     'app/*/*-controller.js',
